@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model infoweb\projectform\models\Projectform */
 
-$this->title = 'Create Projectform';
-$this->params['breadcrumbs'][] = ['label' => 'Projectforms', 'url' => ['index']];
+$this->title = 'Formulier toevoegen';
+$this->params['breadcrumbs'][] = ['label' => 'Formulieren', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="projectform-create">

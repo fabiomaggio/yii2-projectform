@@ -61,9 +61,9 @@ class ProjectformController extends Controller
     public function actionCreate()
     {
         $model = new Projectform();
-
+    
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);          
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -115,7 +115,7 @@ class ProjectformController extends Controller
         if (($model = Projectform::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('De gevraagde pagina bestaat niet.');
         }
     }
 }

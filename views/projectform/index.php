@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel infoweb\projectform\models\Postsearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Projectforms';
+$this->title = 'Formulieren';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="projectform-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Projectform', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Toevoegen', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'project_id',
             'name',
-            'settings:ntext',
-            'created_at',
+            //'settings:ntext',
+            //'created_at',
             // 'updated_at',
             // 'deleted_at',
 

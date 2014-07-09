@@ -3,6 +3,10 @@
 namespace infoweb\projectform\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
+use yii\behaviors\TimestampBehavior;
+use infoweb\projectform\behaviors\EncodeBehavior;
 
 /**
  * This is the model class for table "projectforms".
@@ -31,9 +35,7 @@ class Projectform extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_id', 'name', 'settings', 'created_at', 'updated_at', 'deleted_at'], 'required'],
-            [['settings'], 'string'],
-            [['created_at', 'updated_at', 'deleted_at'], 'integer'],
+            [['project_id', 'name', 'settings'], 'required'],
             [['project_id'], 'string', 'max' => 25],
             [['name'], 'string', 'max' => 255],
             [['project_id'], 'unique']
@@ -47,12 +49,29 @@ class Projectform extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'project_id' => 'Project ID',
-            'name' => 'Name',
-            'settings' => 'Settings',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'deleted_at' => 'Deleted At',
+            'project_id' => 'Projectnummer',
+            'name' => 'Naam',
+            'settings' => 'Configuratie',
+            'created_at' => 'Aangemaakt op',
+            'updated_at' => 'Gewijzigd op'
         ];
+    }
+    
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'updated_at',
+                ],
+                'value' => function() { return time(); },
+            ],
+            'encode'    => [
+                'class' => EncodeBehavior::className(),
+                'attributes' => ['settings']    
+            ]
+        ]);
     }
 }

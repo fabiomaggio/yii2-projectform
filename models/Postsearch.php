@@ -18,7 +18,7 @@ class Postsearch extends Projectform
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
             [['project_id', 'name', 'settings'], 'safe'],
         ];
     }
@@ -52,7 +52,6 @@ class Postsearch extends Projectform
             'id' => $this->id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
         ]);
 
         $query->andFilterWhere(['like', 'project_id', $this->project_id])
