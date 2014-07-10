@@ -1,14 +1,17 @@
 <?php
 
 use yii\helpers\Html;
+use infoweb\projectform\ProjectformAsset;
+
+// Register assets
+ProjectformAsset::register($this);
 
 /* @var $this yii\web\View */
 /* @var $model infoweb\projectform\models\Projectform */
 
-$this->title = 'Update Projectform: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Projectforms', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Formulier wijzigen: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Formulieren', 'url' => ['index']];
+$this->params['breadcrumbs'][] = 'Formulier wijzigen';
 ?>
 <div class="projectform-update">
 

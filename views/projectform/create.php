@@ -1,7 +1,10 @@
 <?php
 
 use yii\helpers\Html;
+use infoweb\projectform\ProjectformAsset;
 
+// Register assets
+ProjectformAsset::register($this);
 
 /* @var $this yii\web\View */
 /* @var $model infoweb\projectform\models\Projectform */
@@ -19,3 +22,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+

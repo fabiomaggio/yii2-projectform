@@ -1,0 +1,9 @@
+.form-name-input {
+    display: inline-block;
+    width: 350px;
+}
+
+.btn-delete-form {
+    display: inline-block;
+    cursor: pointer;
+}
