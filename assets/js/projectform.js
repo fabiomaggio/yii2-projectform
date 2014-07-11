@@ -21,7 +21,8 @@ function toggleForms(e) {
     if (checked) {
         $('#btn-add-form').show().trigger('click');
     } else {
-        $('#btn-add-form').hide();   
+        $('#btn-add-form').hide();
+        $('#forms-container').empty();   
     }
 }
 

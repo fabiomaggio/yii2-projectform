@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use dektrium\user\models\User;
 
 /**
  * ProjectformController implements the CRUD actions for Projectform model.
@@ -74,9 +75,10 @@ class ProjectformController extends Controller
     
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);          
-        } else {
+        } else {            
             return $this->render('create', [
                 'model' => $model,
+                'users' => User::findAll(['id != :id', ['id' => 12]])
             ]);
         }
     }
@@ -111,6 +113,25 @@ class ProjectformController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Manages the images of an existing Projectform model.
+     *
+     * @param string $id
+     * @return mixed
+     */
+    public function actionImages($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        } else {
+            return $this->render('images', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

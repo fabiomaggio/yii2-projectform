@@ -35,10 +35,10 @@ class Projectform extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_id', 'name', 'settings'], 'required'],
+            [['project_id', 'user_id', 'name', 'settings'], 'required'],
             [['project_id'], 'string', 'max' => 25],
             [['name'], 'string', 'max' => 255],
-            [['project_id'], 'unique']
+            [['project_id', 'user_id'], 'unique'],
         ];
     }
 
@@ -50,6 +50,7 @@ class Projectform extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'project_id' => 'Projectnummer',
+            'user_id' => 'Gebruiker',
             'name' => 'Naam',
             'settings' => 'Configuratie',
             'created_at' => 'Aangemaakt op',

@@ -34,7 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}'
+                'template' => '{update} {delete} {images}',
+                'buttons' => [
+                    'images'    => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-picture"></span>', $url, [
+                            'title' => Yii::t('app', 'Afbeeldingen beheren'),
+                            'data-pjax' => '0'
+                        ]);
+                    }
+                ]
             ],
         ],
     ]); ?>
