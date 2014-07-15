@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use infoweb\projectform\behaviors\EncodeBehavior;
+use infoweb\projectform\models\Image;
 
 /**
  * This is the model class for table "projectforms".
@@ -74,5 +75,13 @@ class Projectform extends \yii\db\ActiveRecord
                 'attributes' => ['settings']    
             ]
         ]);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImages()
+    {
+        return $this->hasMany(Image::className(), ['projectform_id' => 'id']);
     }
 }
