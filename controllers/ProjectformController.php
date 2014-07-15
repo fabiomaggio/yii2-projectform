@@ -102,6 +102,7 @@ class ProjectformController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'users' => User::find()->where('id != 12')->all()
             ]);
         }
     }
@@ -161,6 +162,20 @@ class ProjectformController extends Controller
         return $this->render('images', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Deletes an existing image
+     * 
+     * @param   string  $id
+     * @return  mixed
+     */
+    public function actionDeleteImage($id)
+    {
+        $image = ProjectformImage::findOne($id);
+        $image->delete();
+        
+        return $this->redirect(['images', 'id' => $image->projectform_id]);    
     }
 
     /**

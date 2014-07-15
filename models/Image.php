@@ -61,4 +61,17 @@ class Image extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Projectform::className(), ['id' => 'projectform_id']);
     }
+    
+    public function delete()
+    {
+        if (parent::delete())
+        {
+            // Remove the files on the server
+            foreach (\infoweb\projectform\Module::getInstance()->thumbnailDimensions as $dimension)
+            {
+                if (file_exists(Yii::$app->params['uploadPath'] . "/images/{$dimension['x']}x{$dimension['y']}/{$this->name}"))
+                    unlink(Yii::$app->params['uploadPath'] . "/images/{$dimension['x']}x{$dimension['y']}/{$this->name}");
+            }
+        }
+    }
 }

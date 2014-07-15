@@ -18,6 +18,24 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map($users, 'id', 'username'), ['prompt' => '-- Kies een gebruiker --']); ?>
     
+    <?php if ($model->images) : ?>
+        
+    <div class="row">       
+        <h3 class="col-sm-12">Afbeeldingen</h3>
+        
+        <?php foreach ($model->images as $image) : ?>
+        
+        <div class="thumbnail-container col-sm-3">
+            <img src="<?php echo Yii::$app->params['baseUrlImages'] . "260x190/{$image->name}"; ?>" class="img-thumbnail" /><br />
+            <input type="checkbox" name="Projectform[settings][images][]" value="<?php echo $image->id; ?>"<?php if (isset($model->settings['images']) && in_array($image->id, $model->settings['images'])) : ?>checked<?php endif; ?> />
+        </div>
+            
+        <?php endforeach; ?>
+            
+    </div>    
+        
+    <?php endif; ?>
+    
     <div class="row">
         <div class="col-sm-4">
             
@@ -132,7 +150,7 @@ use yii\widgets\ActiveForm;
                 </label> 
             </div>
             <div id="forms-container">
-            <?php if ($model->settings['enable-forms'] && isset($model->settings['forms'])) : ?>
+            <?php if ($model->settings['manage-forms'] && isset($model->settings['forms'])) : ?>
                 
                 <?php foreach ($model->settings['forms'] as $k => $form) : ?>
                 
