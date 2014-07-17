@@ -7,27 +7,23 @@ use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use infoweb\projectform\behaviors\EncodeBehavior;
-use infoweb\projectform\models\Image;
 
 /**
- * This is the model class for table "projectforms".
+ * This is the model class for table "projectforms_data".
  *
- * @property string $id
- * @property string $project_id
- * @property string $name
- * @property string $settings
+ * @property string $projectform_id
+ * @property string $entries
  * @property string $created_at
  * @property string $updated_at
- * @property string $deleted_at
  */
-class Projectform extends \yii\db\ActiveRecord
+class ProjectformData extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'projectforms';
+        return 'projectforms_data';
     }
 
     /**
@@ -36,10 +32,8 @@ class Projectform extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_id', 'user_id', 'name', 'settings'], 'required'],
-            [['project_id'], 'string', 'max' => 25],
-            [['name'], 'string', 'max' => 255],
-            [['project_id', 'user_id'], 'unique'],
+            [['projectform_id', 'entries'], 'required'],
+            [['projectform_id'], 'integer'],
         ];
     }
 
@@ -49,13 +43,10 @@ class Projectform extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'project_id' => 'Projectnummer',
-            'user_id' => 'Gebruiker',
-            'name' => 'Naam',
-            'settings' => 'Configuratie',
+            'projectform_id' => 'Formulier ID',
+            'entries' => 'Data',
             'created_at' => 'Aangemaakt op',
-            'updated_at' => 'Gewijzigd op'
+            'updated_at' => 'Gewijzigd op',
         ];
     }
     
@@ -72,24 +63,16 @@ class Projectform extends \yii\db\ActiveRecord
             ],
             'encode'    => [
                 'class' => EncodeBehavior::className(),
-                'attributes' => ['settings']    
+                'attributes' => ['entries']    
             ]
         ]);
-    }
-    
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getImages()
-    {
-        return $this->hasMany(Image::className(), ['projectform_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getData()
+    public function getForm()
     {
-        return $this->hasOne(ProjectformData::className(), ['projectform_id' => 'id']);
+        return $this->hasOne(Projectform::className(), ['id' => 'projectform_id']);
     }
 }

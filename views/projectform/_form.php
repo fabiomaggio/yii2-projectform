@@ -114,22 +114,22 @@ use yii\widgets\ActiveForm;
             </h3>
             <div class="form-group checkbox">
                 <label class="control-label">
-                    <input type="checkbox" name="Projectform[settings][dns]['domain']" value="1"<?php if ($model->settings['dns']['domain']) : ?> checked<?php endif; ?> data-toggler="dns"> Domein
+                    <input type="checkbox" name="Projectform[settings][dns][domain]" value="1"<?php if ($model->settings['dns']['domain']) : ?> checked<?php endif; ?> data-toggler="dns"> Domein
                 </label> 
             </div>
             <div class="form-group checkbox">
                 <label class="control-label">
-                    <input type="checkbox" name="Projectform[settings][dns]['a-record']" value="1"<?php if ($model->settings['dns']['a-record']) : ?> checked<?php endif; ?> data-toggler="dns"> A-record
+                    <input type="checkbox" name="Projectform[settings][dns][a-record]" value="1"<?php if ($model->settings['dns']['a-record']) : ?> checked<?php endif; ?> data-toggler="dns"> A-record
                 </label> 
             </div>
             <div class="form-group checkbox">
                 <label class="control-label">
-                    <input type="checkbox" name="Projectform[settings][dns]['mx-records']" value="1"<?php if ($model->settings['dns']['mx-records']) : ?> checked<?php endif; ?> data-toggler="dns"> MX-record(s)
+                    <input type="checkbox" name="Projectform[settings][dns][mx-records]" value="1"<?php if ($model->settings['dns']['mx-records']) : ?> checked<?php endif; ?> data-toggler="dns"> MX-record(s)
                 </label> 
             </div>
             <div class="form-group checkbox">
                 <label class="control-label">
-                    <input type="checkbox" name="Projectform[settings][dns]['txt-records']" value="1"<?php if ($model->settings['dns']['txt-records']) : ?> checked<?php endif; ?> data-toggler="dns"> TXT-record(s)
+                    <input type="checkbox" name="Projectform[settings][dns][txt-records]" value="1"<?php if ($model->settings['dns']['txt-records']) : ?> checked<?php endif; ?> data-toggler="dns"> TXT-record(s)
                 </label> 
             </div>    
         </div>
@@ -138,7 +138,7 @@ use yii\widgets\ActiveForm;
             <h3>Opties</h3>
             <div class="form-group checkbox">
                 <label class="control-label">
-                    <input type="checkbox" name="Projectform[settings][email]['manage']" value="1"<?php if ($model->settings['email']['manage']) : ?> checked<?php endif; ?>> E-mailadres(sen) beheren
+                    <input type="checkbox" name="Projectform[settings][manage-email]" value="1"<?php if ($model->settings['manage-email']) : ?> checked<?php endif; ?>> E-mailadres(sen) beheren
                 </label> 
             </div>
             <div class="form-group checkbox">
