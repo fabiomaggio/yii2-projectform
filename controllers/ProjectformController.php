@@ -82,7 +82,7 @@ class ProjectformController extends Controller
         } else {            
             return $this->render('create', [
                 'model' => $model,
-                'users' => User::findAll(['id != :id', ['id' => 12]])
+                'users' => User::find()->where('id != 12')->all()
             ]);
         }
     }
